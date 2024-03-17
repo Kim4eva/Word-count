@@ -1,0 +1,36 @@
+def count_words(file_path):
+  word_count = {}
+
+  # Open the file and read its contents
+  with open(file_path, 'r') as file:
+      # Read the file line by line
+      for line in file:
+          # Split the line into words
+          words = line.split()
+          # Iterate through each word
+          for word in words:
+              # Remove punctuation and convert to lowercase
+              word = word.strip('.,!?').lower()
+              # Add the word to the word_count dictionary or increment its count
+              word_count[word] = word_count.get(word, 0) + 1
+
+  return word_count
+
+def display_word_count(word_count):
+  print("Word Count:")
+  # Sort the word_count dictionary by keys (words) in alphabetical order
+  for word in sorted(word_count):
+      print(f"{word}: {word_count[word]}")
+
+def main():
+  # Path to the text document
+  file_path = 'sample_text.txt'  # Replace 'sample_text.txt' with the path to your text file
+
+  # Count the words in the text document
+  word_count = count_words(file_path)
+
+  # Display the word count
+  display_word_count(word_count)
+
+#if __name__ == "__main__":
+  #main()
